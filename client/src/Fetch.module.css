@@ -1,0 +1,10 @@
+.celebrities {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+}
+.celebrity {
+    list-style-type: none;
+    justify-self: center;
+}

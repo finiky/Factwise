@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./Fetch.module.css";
 const Fetch = () => {
   const [celebrities, setcelebrities] = useState([]);
   useEffect(() => {
@@ -12,11 +13,10 @@ const Fetch = () => {
   }, []);
   return (
     <div>
-      <ul>
+      <ul className={styles.celebrities}>
         {celebrities.map((celebrity) => (
-          <li key={celebrity.id}>
-            <p>{celebrity.first}</p>
-            <p>{celebrity.first}</p>
+          <li className={styles.celebrity} key={celebrity.id}>
+            <p>{`${celebrity.first} ${celebrity.last}`}</p>
           </li>
         ))}
       </ul>
