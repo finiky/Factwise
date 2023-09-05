@@ -9,7 +9,7 @@ const Fetch = () => {
       setcelebrities(data);
     };
     fetchData();
-  }, [celebrities]);
+  }, []);
   return (
     <div>
       {/* <ul>
