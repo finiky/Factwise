@@ -12,14 +12,14 @@ const Fetch = () => {
   }, []);
   return (
     <div>
-      {/* <ul>
+      <ul>
         {celebrities.map((celebrity) => (
           <li key={celebrity.id}>
             <p>{celebrity.first}</p>
             <p>{celebrity.first}</p>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 };
