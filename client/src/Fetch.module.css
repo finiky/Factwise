@@ -8,3 +8,7 @@
     list-style-type: none;
     justify-self: center;
 }
+.nameState {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+}

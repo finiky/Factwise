@@ -1,7 +1,14 @@
-const OpenCollapseButton = ({ id, state }) => {
+import { useState } from "react";
+const OpenCollapseButton = ({ id }) => {
+  const [state, setState] = useState("+");
   const handleState = (e) => {
     e.preventDefault();
-    console.log(state);
+    if (state === "+") {
+      setState("-");
+    }
+    if (state === "-") {
+      setState("+");
+    }
   };
   return (
     <button id={id} onClick={handleState}>
