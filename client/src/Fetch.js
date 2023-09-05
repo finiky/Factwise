@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./Fetch.module.css";
+import OpenCollapseButton from "./OpenCollapseButton";
 const Fetch = () => {
   const [celebrities, setcelebrities] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:5000/celebrities");
       const data = await response.json();
-      console.log(data);
       setcelebrities(data);
     };
     fetchData();
@@ -17,6 +17,7 @@ const Fetch = () => {
         {celebrities.map((celebrity) => (
           <li className={styles.celebrity} key={celebrity.id}>
             <p>{`${celebrity.first} ${celebrity.last}`}</p>
+            <OpenCollapseButton state="+" id={celebrity.id} />
           </li>
         ))}
       </ul>
