@@ -1,7 +1,7 @@
 const OpenCollapseButton = ({ id, state }) => {
   const handleState = (e) => {
     e.preventDefault();
-    console.log(e.state);
+    console.log(state);
   };
   return (
     <button id={id} onClick={handleState}>
