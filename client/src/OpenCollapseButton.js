@@ -6,23 +6,23 @@ const OpenCollapseButton = ({
 }) => {
   const handleState = (e) => {
     e.preventDefault();
-    if (status === "+") {
+    if (status === "-") {
       const changeStatus = () => {
         const modifiedCelebrities = celebrities.map((celebrity) => {
           if (celebrity.id === celebrityId) {
-            celebrity.status = "-";
-          } else {
             celebrity.status = "+";
+          } else {
+            celebrity.status = "-";
           }
           return celebrity;
         });
         setCelebrities(modifiedCelebrities);
       };
       changeStatus();
-    } else if (status === "-") {
+    } else if (status === "+") {
       const changeStatus = () => {
         const modifiedCelebrities = celebrities.map((celebrity) => {
-          return { ...celebrity, status: "+" };
+          return { ...celebrity, status: "-" };
         });
         setCelebrities(modifiedCelebrities);
       };

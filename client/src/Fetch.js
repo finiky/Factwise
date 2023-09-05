@@ -9,12 +9,14 @@ const Fetch = () => {
       const response = await fetch("http://localhost:5000/celebrities");
       const data = await response.json();
       const updatedData = data.map((celebrity) => {
-        return { ...celebrity, status: "+" };
+        return { ...celebrity, status: "-" };
       });
       setCelebrities(updatedData);
     };
     fetchData();
   }, []);
+  const handleDelete = () => {};
+  const handleEdit = () => {};
   return (
     <div>
       <ul className={styles.celebrities}>
@@ -31,7 +33,7 @@ const Fetch = () => {
             </div>
             {celebrities.length === 0 ? (
               <></>
-            ) : celebrity.status === "-" ? (
+            ) : celebrity.status === "+" ? (
               <div>
                 <label htmlFor="age">Age</label>
                 <p id="age">{ageCalculator(celebrity.dob)}</p>
@@ -41,6 +43,8 @@ const Fetch = () => {
                 <p id="country">{celebrity.country}</p>
                 <label htmlFor="adescription">Description</label>
                 <p id="description">{celebrity.description}</p>
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleEdit}>Edit</button>
               </div>
             ) : (
               <></>
