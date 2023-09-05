@@ -11,7 +11,7 @@ const OpenCollapseButton = ({ id }) => {
     }
   };
   return (
-    <button id={id} onClick={handleState}>
+    <button data-state={state} id={id} onClick={handleState}>
       {state}
     </button>
   );
