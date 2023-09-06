@@ -4,6 +4,7 @@ import OpenCollapseButton from "./OpenCollapseButton"; // open/collapse
 import ageCalculator from "./ageCalculator"; // age calculation
 import EditForm from "./EditForm"; // edit form
 import handleDelete from "./handleDelete"; // delete celebrity
+import handleEdit from "./handleEdit"; // edit celebrity
 
 const Fetch = () => {
   const [celebrities, setCelebrities] = useState([]);
@@ -21,18 +22,6 @@ const Fetch = () => {
     };
     fetchData();
   }, []);
-  const handleEdit = (e) => {
-    if (ageCalculator(celebrities[e.target.dataset.index].dob) >= 18) {
-      editCelebrity.current = {
-        ...celebrities[e.target.dataset.index],
-        index: e.target.dataset.index,
-      };
-      setEdit(true);
-    } else {
-      editCelebrity.current = {};
-      setEdit(false);
-    }
-  };
   if (edit) {
     return (
       <EditForm
@@ -80,7 +69,9 @@ const Fetch = () => {
                   type="button"
                   data-id={celebrity.id}
                   data-index={index}
-                  onClick={handleEdit}
+                  onClick={(e) => {
+                    handleEdit(e, celebrities, editCelebrity, setEdit);
+                  }}
                 >
                   Edit
                 </button>
