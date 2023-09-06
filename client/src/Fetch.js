@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Fetch.module.css"; // css modules for styling
 import OpenCollapseButton from "./OpenCollapseButton"; // open/collapse
 import ageCalculator from "./ageCalculator"; // age calculation
+import EditForm from "./EditForm"; // edit form
 import handleDelete from "./handleDelete"; // delete celebrity
+
 const Fetch = () => {
   const [celebrities, setCelebrities] = useState([]);
+  const [edit, setEdit] = useState(false);
+  const editCelebrity = useRef({}); // for displying
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:5000/celebrities"); // fetch the data from the server
@@ -12,11 +16,31 @@ const Fetch = () => {
       const updatedData = data.map((celebrity) => {
         return { ...celebrity, status: "-" };
       });
+      setEdit(false);
       setCelebrities(updatedData);
     };
     fetchData();
   }, []);
-  const handleEdit = () => {};
+  const handleEdit = (e) => {
+    if (ageCalculator(celebrities[e.target.dataset.index].dob) >= 18) {
+      editCelebrity.current = celebrities[e.target.dataset.index];
+      setEdit(true);
+    } else {
+      editCelebrity.current = {};
+      setEdit(false);
+    }
+  };
+  if (edit) {
+    return (
+      <EditForm
+        currentCelebrity={editCelebrity.current}
+        celebrities={celebrities}
+        setCelebrities={setCelebrities}
+        edit={edit}
+        setEdit={setEdit}
+      />
+    );
+  }
   return (
     <div>
       <ul className={styles.celebrities}>
