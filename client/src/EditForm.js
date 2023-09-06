@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./EditForm.module.css";
 const EditForm = ({
   currentCelebrity,
   celebrities,
@@ -42,67 +43,92 @@ const EditForm = ({
   };
 
   return (
-    <div>
-      <h3>
+    <div className={styles.main}>
+      <h2 className={styles.name}>
         {currentCelebrity.first} {currentCelebrity.last}
-      </h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="dob">DOB</label>
-        <input
-          id="dob"
-          type="date"
-          value={celebrity.dob}
-          onChange={(e) => {
-            setCelebrity({ ...currentCelebrity, dob: e.target.value });
-          }}
-          required
-        />
-        <label htmlFor="gender">Gender</label>
-        <select
-          name="gender"
-          id="gender"
-          value={celebrity.gender}
-          onChange={(e) => {
-            setCelebrity({
-              ...celebrity,
-              gender: e.target.value,
-            });
-          }}
-          required
-        >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="transgender">Transgender</option>
-          <option value="rather not say">Rather not say</option>
-          <option value="other">Other</option>
-        </select>
-        <label htmlFor="country">Country</label>
-        <input
-          id="country"
-          type="text"
-          value={celebrity.country}
-          onChange={(e) => {
-            setCelebrity({ ...currentCelebrity, country: e.target.value });
-          }}
-          required
-        />
-        <label htmlFor="description">Description</label>
-        <textarea
-          rows="8"
-          cols="50"
-          id="description"
-          value={celebrity.description}
-          onChange={(e) => {
-            setCelebrity({ ...currentCelebrity, description: e.target.value });
-          }}
-          required
-        />
-        <button type="submit" disabled={enable}>
-          Save
-        </button>
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
+      </h2>
+      <form className={styles.infoDiv} onSubmit={handleSubmit}>
+        <div className={styles.subInfoDiv}>
+          <label className={styles.label} htmlFor="dob">
+            DOB
+          </label>
+          <input
+            className={styles.input}
+            id="dob"
+            type="date"
+            value={celebrity.dob}
+            onChange={(e) => {
+              setCelebrity({ ...currentCelebrity, dob: e.target.value });
+            }}
+            required
+          />
+        </div>
+        <div className={styles.subInfoDiv}>
+          <label className={styles.label} htmlFor="gender">
+            Gender
+          </label>
+          <select
+            className={styles.input}
+            name="gender"
+            id="gender"
+            value={celebrity.gender}
+            onChange={(e) => {
+              setCelebrity({
+                ...celebrity,
+                gender: e.target.value,
+              });
+            }}
+            required
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="transgender">Transgender</option>
+            <option value="rather not say">Rather not say</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className={styles.subInfoDiv}>
+          <label className={styles.label} htmlFor="country">
+            Country
+          </label>
+          <input
+            className={styles.input}
+            id="country"
+            type="text"
+            value={celebrity.country}
+            onChange={(e) => {
+              setCelebrity({ ...currentCelebrity, country: e.target.value });
+            }}
+            required
+          />
+        </div>
+        <div className={styles.descDiv}>
+          <label className={styles.label} htmlFor="description">
+            Description
+          </label>
+          <textarea
+            className={styles.input}
+            rows="5"
+            cols="30"
+            id="description"
+            value={celebrity.description}
+            onChange={(e) => {
+              setCelebrity({
+                ...currentCelebrity,
+                description: e.target.value,
+              });
+            }}
+            required
+          />
+        </div>
+        <div className={styles.buttonDiv}>
+          <button className={styles.but} type="submit" disabled={enable}>
+            Save
+          </button>
+          <button className={styles.but} type="button" onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
