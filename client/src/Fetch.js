@@ -15,12 +15,15 @@ const Fetch = () => {
     };
     fetchData();
   }, []);
-  const handleDelete = () => {};
+  const handleDelete = (e) => {
+    const modifiedList = celebrities.toSpliced(e.target.dataset.index, 1);
+    setCelebrities(modifiedList);
+  };
   const handleEdit = () => {};
   return (
     <div>
       <ul className={styles.celebrities}>
-        {celebrities.map((celebrity) => (
+        {celebrities.map((celebrity, index) => (
           <li className={styles.celebrity} key={celebrity.id}>
             <div className={styles.nameState}>
               <p>{`${celebrity.first} ${celebrity.last}`}</p>
@@ -43,8 +46,16 @@ const Fetch = () => {
                 <p id="country">{celebrity.country}</p>
                 <label htmlFor="adescription">Description</label>
                 <p id="description">{celebrity.description}</p>
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleEdit}>Edit</button>
+                <button type="button" data-index={index} onClick={handleDelete}>
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  data-id={celebrity.id}
+                  onClick={handleEdit}
+                >
+                  Edit
+                </button>
               </div>
             ) : (
               <></>
