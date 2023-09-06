@@ -27,7 +27,7 @@ const EditForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     const validate = () => {
-      const pattern = /^[A-Za-z]+$/;
+      const pattern = /^[A-Za-z\s]*$/;
       if (!pattern.test(celebrity.country)) {
         return false;
       } else return true;
