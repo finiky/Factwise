@@ -23,7 +23,10 @@ const Fetch = () => {
   }, []);
   const handleEdit = (e) => {
     if (ageCalculator(celebrities[e.target.dataset.index].dob) >= 18) {
-      editCelebrity.current = celebrities[e.target.dataset.index];
+      editCelebrity.current = {
+        ...celebrities[e.target.dataset.index],
+        index: e.target.dataset.index,
+      };
       setEdit(true);
     } else {
       editCelebrity.current = {};
@@ -36,7 +39,6 @@ const Fetch = () => {
         currentCelebrity={editCelebrity.current}
         celebrities={celebrities}
         setCelebrities={setCelebrities}
-        edit={edit}
         setEdit={setEdit}
       />
     );

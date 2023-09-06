@@ -3,12 +3,12 @@ const EditForm = ({
   currentCelebrity,
   celebrities,
   setCelebrities,
-  edit,
   setEdit,
 }) => {
   const [enable, setEnable] = useState("disabled"); // for enabling disabling the form submit buttons
   const [celebrity, setCelebrity] = useState(currentCelebrity);
   useEffect(() => {
+    // form save button avtivate/deactivate
     const detectChanges = () => {
       for (let x in currentCelebrity) {
         if (currentCelebrity[x] !== celebrity[x]) {
