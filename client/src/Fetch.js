@@ -33,12 +33,14 @@ const Fetch = () => {
     );
   }
   return (
-    <div>
+    <div className={styles.main}>
       <ul className={styles.celebrities}>
         {celebrities.map((celebrity, index) => (
           <li className={styles.celebrity} key={celebrity.id}>
             <div className={styles.nameState}>
-              <p className={styles.name}>{`${celebrity.first} ${celebrity.last}`}</p>
+              <p
+                className={styles.name}
+              >{`${celebrity.first} ${celebrity.last}`}</p>
               <OpenCollapseButton
                 class1={styles.openCollapse}
                 celebrityId={celebrity.id}
@@ -50,32 +52,62 @@ const Fetch = () => {
             {celebrities.length === 0 ? (
               <></>
             ) : celebrity.status === "+" ? (
-              <div>
-                <label htmlFor="age">Age</label>
-                <p id="age">{ageCalculator(celebrity.dob)}</p>
-                <label htmlFor="gender">Gender</label>
-                <p id="gender">{celebrity.gender}</p>
-                <label htmlFor="country">Country</label>
-                <p id="country">{celebrity.country}</p>
-                <label htmlFor="adescription">Description</label>
-                <p id="description">{celebrity.description}</p>
-                <button
-                  type="button"
-                  data-index={index}
-                  onClick={(e) => handleDelete(e, celebrities, setCelebrities)}
-                >
-                  Delete
-                </button>
-                <button
-                  type="button"
-                  data-id={celebrity.id}
-                  data-index={index}
-                  onClick={(e) => {
-                    handleEdit(e, celebrities, editCelebrity, setEdit);
-                  }}
-                >
-                  Edit
-                </button>
+              <div className={styles.infoDiv}>
+                <div>
+                  <label className={styles.label} htmlFor="age">
+                    Age
+                  </label>
+                  <p className={styles.age} id="age">
+                    {ageCalculator(celebrity.dob)}
+                  </p>
+                </div>
+                <div>
+                  <label className={styles.label} htmlFor="gender">
+                    Gender
+                  </label>
+                  <p className={styles.gender} id="gender">
+                    {celebrity.gender.toUpperCase()}
+                  </p>
+                </div>
+                <div>
+                  <label className={styles.label} htmlFor="country">
+                    Country
+                  </label>
+                  <p className={styles.country} id="country">
+                    {celebrity.country}
+                  </p>
+                </div>
+                <div className={styles.descDiv}>
+                  <label className={styles.label} htmlFor="description">
+                    Description
+                  </label>
+                  <p className={styles.description} id="description">
+                    {celebrity.description}
+                  </p>
+                </div>
+                <div className={styles.buttonDiv}>
+                  <button
+                    className={styles.but}
+                    type="button"
+                    data-index={index}
+                    onClick={(e) =>
+                      handleDelete(e, celebrities, setCelebrities)
+                    }
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className={styles.but}
+                    type="button"
+                    data-id={celebrity.id}
+                    data-index={index}
+                    onClick={(e) => {
+                      handleEdit(e, celebrities, editCelebrity, setEdit);
+                    }}
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
             ) : (
               <></>
