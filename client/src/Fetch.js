@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Fetch.module.css"; // css modules for styling
-import OpenCollapseButton from "./OpenCollapseButton"; // open/collapse
-import ageCalculator from "./ageCalculator"; // age calculation
+import OpenCollapseButton from "./OpenCollapseButton"; // open + | collapse -
+import ageCalculator from "./ageCalculator"; // age conversion to years
 import EditForm from "./EditForm"; // edit form
 import handleDelete from "./handleDelete"; // delete celebrity
 import handleEdit from "./handleEdit"; // edit celebrity
