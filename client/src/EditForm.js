@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 const EditForm = ({
   currentCelebrity,
   celebrities,
@@ -9,7 +9,6 @@ const EditForm = ({
   // compare currentCelebrity with celebrity using deep copy to determine the status of enabling the button
   const [enable, setEnable] = useState("disabled"); // for enabling disabling the form submit buttons
   const [celebrity, setCelebrity] = useState(currentCelebrity);
-  console.log(celebrity);
   //   useEffect(() => {
   //     for (let x in currentCelebrity) {
   //       if (currentCelebrity[x] !== celebrity[x]) {
