@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const EditForm = ({
   currentCelebrity,
   celebrities,
@@ -6,18 +6,20 @@ const EditForm = ({
   edit,
   setEdit,
 }) => {
-  // compare currentCelebrity with celebrity using deep copy to determine the status of enabling the button
   const [enable, setEnable] = useState("disabled"); // for enabling disabling the form submit buttons
   const [celebrity, setCelebrity] = useState(currentCelebrity);
-  //   useEffect(() => {
-  //     for (let x in currentCelebrity) {
-  //       if (currentCelebrity[x] !== celebrity[x]) {
-  //         setEnable("");
-  //       } else {
-  //         setEnable("disabled");
-  //       }
-  //     }
-  //   });
+  useEffect(() => {
+    const detectChanges = () => {
+      for (let x in currentCelebrity) {
+        if (currentCelebrity[x] !== celebrity[x]) {
+          setEnable("");
+          return;
+        }
+      }
+      setEnable("disabled");
+    };
+    detectChanges();
+  }, [celebrity]);
 
   // handle form submission after making changes
   const handleSubmit = (e) => {
