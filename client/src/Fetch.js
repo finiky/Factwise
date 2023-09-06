@@ -38,8 +38,9 @@ const Fetch = () => {
         {celebrities.map((celebrity, index) => (
           <li className={styles.celebrity} key={celebrity.id}>
             <div className={styles.nameState}>
-              <p>{`${celebrity.first} ${celebrity.last}`}</p>
+              <p className={styles.name}>{`${celebrity.first} ${celebrity.last}`}</p>
               <OpenCollapseButton
+                class1={styles.openCollapse}
                 celebrityId={celebrity.id}
                 celebrities={celebrities}
                 setCelebrities={setCelebrities}

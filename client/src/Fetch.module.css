@@ -1,14 +1,29 @@
 .celebrities {
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
 }
 .celebrity {
-    list-style-type: none;
-    justify-self: center;
+  list-style-type: none;
+  border: solid 0.05rem black;
+  margin: 1rem;
 }
 .nameState {
-    display: grid;
-    grid-template-columns: 1fr max-content;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: center;
+}
+.name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  justify-self: start;
+  column-gap: 4rem;
+  margin: 0;
+  padding: 2rem;
+}
+.openCollapse {
+  margin: 2rem;
+  justify-self: center;
 }

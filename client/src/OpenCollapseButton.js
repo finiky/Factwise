@@ -3,6 +3,7 @@ const OpenCollapseButton = ({
   celebrities,
   setCelebrities,
   status,
+  class1
 }) => {
   const handleState = (e) => {
     e.preventDefault();
@@ -29,7 +30,11 @@ const OpenCollapseButton = ({
       changeStatus();
     }
   };
-  return <button onClick={handleState}>{status}</button>;
+  return (
+    <button class={class1} onClick={handleState}>
+      {status}
+    </button>
+  );
 };
 
 export default OpenCollapseButton;
