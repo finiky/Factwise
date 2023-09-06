@@ -26,14 +26,27 @@ const EditForm = ({
   // handle form submission after making changes
   const handleSubmit = (e) => {
     e.preventDefault();
-    const afterEdit = celebrities.map((celeb) => {
-      if (celeb.id === currentCelebrity.id) {
-        return celebrity;
-      } else return celeb;
-    });
-    setEnable("disabled");
-    setCelebrities(afterEdit);
-    setEdit(false);
+    const validate = () => {
+      const pattern = /^[A-Za-z]+$/;
+      if (!pattern.test(celebrity.country)) {
+        return false;
+      } else return true;
+    };
+    const invalid = validate();
+    console.log(invalid);
+    if (!invalid) {
+      alert("Country cannot have numbers");
+      return;
+    } else {
+      const afterEdit = celebrities.map((celeb) => {
+        if (celeb.id === currentCelebrity.id) {
+          return celebrity;
+        } else return celeb;
+      });
+      setEnable("disabled");
+      setCelebrities(afterEdit);
+      setEdit(false);
+    }
   };
 
   // cancel edit
