@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import styles from "./Fetch.module.css";
-import OpenCollapseButton from "./OpenCollapseButton";
-import ageCalculator from "./ageCalculator";
+import styles from "./Fetch.module.css"; // css modules for styling
+import OpenCollapseButton from "./OpenCollapseButton"; // open/collapse
+import ageCalculator from "./ageCalculator"; // age calculation
+import handleDelete from "./handleDelete"; // delete celebrity
 const Fetch = () => {
   const [celebrities, setCelebrities] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:5000/celebrities");
+      const response = await fetch("http://localhost:5000/celebrities"); // fetch the data from the server
       const data = await response.json();
       const updatedData = data.map((celebrity) => {
         return { ...celebrity, status: "-" };
@@ -15,10 +16,6 @@ const Fetch = () => {
     };
     fetchData();
   }, []);
-  const handleDelete = (e) => {
-    const modifiedList = celebrities.toSpliced(e.target.dataset.index, 1);
-    setCelebrities(modifiedList);
-  };
   const handleEdit = () => {};
   return (
     <div>
@@ -46,12 +43,17 @@ const Fetch = () => {
                 <p id="country">{celebrity.country}</p>
                 <label htmlFor="adescription">Description</label>
                 <p id="description">{celebrity.description}</p>
-                <button type="button" data-index={index} onClick={handleDelete}>
+                <button
+                  type="button"
+                  data-index={index}
+                  onClick={(e) => handleDelete(e, celebrities, setCelebrities)}
+                >
                   Delete
                 </button>
                 <button
                   type="button"
                   data-id={celebrity.id}
+                  data-index={index}
                   onClick={handleEdit}
                 >
                   Edit
