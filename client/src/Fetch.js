@@ -42,11 +42,12 @@ const Fetch = () => {
                 className={styles.name}
               >{`${celebrity.first} ${celebrity.last}`}</p>
               <OpenCollapseButton
-                class1={styles.openCollapse}
                 celebrityId={celebrity.id}
                 celebrities={celebrities}
                 setCelebrities={setCelebrities}
                 status={celebrity.status}
+                class1={styles.openCollapse}
+                disable={""}
               />
             </div>
             {celebrities.length === 0 ? (

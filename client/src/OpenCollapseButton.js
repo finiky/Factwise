@@ -1,10 +1,13 @@
+import { useState } from "react";
 const OpenCollapseButton = ({
   celebrityId,
   celebrities,
   setCelebrities,
   status,
-  class1
+  class1,
+  disable,
 }) => {
+  const [enable, setEnable] = useState(disable);
   const handleState = (e) => {
     e.preventDefault();
     if (status === "-") {
@@ -30,8 +33,15 @@ const OpenCollapseButton = ({
       changeStatus();
     }
   };
+  if (enable === "") {
+    return (
+      <button class={class1} onClick={handleState}>
+        {status}
+      </button>
+    );
+  }
   return (
-    <button class={class1} onClick={handleState}>
+    <button class={class1} onClick={handleState} disabled="enable">
       {status}
     </button>
   );
