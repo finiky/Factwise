@@ -27,8 +27,10 @@ const EditForm = ({
   // handle form submission after making changes
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // form validation for nationality to take only letters and space
     const validate = () => {
-      const pattern = /^[A-Za-z\s]*$/;
+      const pattern = /^[A-Za-z\s]*$/; //regexp
       if (!pattern.test(celebrity.country)) {
         return false;
       } else return true;
@@ -188,4 +190,3 @@ const EditForm = ({
 };
 
 export default EditForm;
-<div className={styles.main}></div>;
