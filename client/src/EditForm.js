@@ -7,6 +7,7 @@ const EditForm = ({
 }) => {
   const [enable, setEnable] = useState("disabled"); // for enabling disabling the form submit buttons
   const [celebrity, setCelebrity] = useState(currentCelebrity);
+
   useEffect(() => {
     // form save button avtivate/deactivate
     const detectChanges = () => {
@@ -24,6 +25,14 @@ const EditForm = ({
   // handle form submission after making changes
   const handleSubmit = (e) => {
     e.preventDefault();
+    const afterEdit = celebrities.map((celeb) => {
+      if (celeb.id === currentCelebrity.id) {
+        return celebrity;
+      } else return celeb;
+    });
+    setEnable("disabled");
+    setCelebrities(afterEdit);
+    setEdit(false);
   };
 
   // cancel edit
