@@ -1,12 +1,6 @@
 import Fetch from "./Fetch";
-import styles from "./App.module.css";
-
 function App() {
-  return (
-    <div className={styles.app}>
-      <Fetch />
-    </div>
-  );
+  return <Fetch />;
 }
 
 export default App;
